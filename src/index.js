@@ -1,4 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { App } from './App'
 
-ReactDOM.render(<h1>Seguimos con el curso avanzado de React</h1>, document.getElementById('app'))
+ReactDOM.render(<App />,
+  document.getElementById('app'))
