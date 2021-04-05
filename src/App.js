@@ -1,8 +1,12 @@
 import React from 'react'
-import { Category } from './components/Category'
+import { CategoriesList } from './components/CategoriesList/index'
+import { GlobalStyle } from './GlobalStyles'
 
 export const App = () => {
   return (
-    <Category />
+    <div>
+      <GlobalStyle />
+      <CategoriesList />
+    </div>
   )
 }
