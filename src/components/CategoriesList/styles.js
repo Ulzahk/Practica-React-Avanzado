@@ -1,14 +1,11 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const List = styled.ul`
   display: flex;
   overflow: scroll;
   width: 100%;
   padding: 0;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  &.fixed {
+  ${props => props.fixed && css`
     background: #FFF;
     border-radius: 60px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -21,6 +18,9 @@ export const List = styled.ul`
     top: 0;
     transform: scale(.5);
     z-index: 1;
+  `}
+  &::-webkit-scrollbar {
+    display: none;
   }
 `
 export const Item = styled.li`

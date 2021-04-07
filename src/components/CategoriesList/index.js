@@ -3,7 +3,27 @@ import { Category } from '../Category'
 import { categories as mockCategories } from '../../../api/db.json'
 import { List, Item } from './styles'
 
+// Custom Hook
+/* const useCategoriesData = () => {
+  //Loading
+  const [loading, setLoading] = useState()
+  const [categories, setCategories] = useState(mockCategories)
+  useEffect(() => {
+    setLoading(true)
+    window.fetch('https://practica-react-avanzado-2ebifnw4j-ulzahk.vercel.app/categories')
+      .then(res => res.json())
+      .then(response => {
+        setCategories(response)
+        setLoading(false)
+      })
+  }, [])
+
+  return { categories, loading }
+} */
+
 export const CategoriesList = () => {
+  // Using Custom Hook
+  /* const { categories, loading } = useCategoriesData()  */ 
   const [categories, setCategories] = useState(mockCategories)
   const [showFixed, setShowFixed] = useState(false)
 
@@ -45,8 +65,9 @@ export const CategoriesList = () => {
   }, [showFixed])
 
   const renderList = (fixed) => (
-    <List className={fixed ? 'fixed' : ''}>
+    <List fixed={fixed}>
       {
+        // loading ? <Item key='loading' /> :
         categories.map(
           (category) =>
             <Item key={category.id}>
@@ -56,6 +77,12 @@ export const CategoriesList = () => {
       }
     </List>
   )
+
+  // Using loading state when we are fetching the Data
+  /* if (loading) {
+    return 'Cargando...'
+  } */
+
 
   return (
     <>
