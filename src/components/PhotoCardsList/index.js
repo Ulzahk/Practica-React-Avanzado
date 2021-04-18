@@ -3,8 +3,10 @@ import { PhotoCard } from '../PhotoCard/index'
 import { List } from './styles'
 import db from '../../../api/db.json'
 
-export const PhotoCardsList = ({ categoryId = 0 }) => {
+export const PhotoCardsList = ({ categoryId }) => {
   const [photos] = useState(db.photos)
+  const [categoryData] = useState(JSON.stringify(categoryId))
+  console.log(categoryData.length)
 
   // const forceUpdate = () => {
   //   const [, setTick] = useState(0)
@@ -21,7 +23,8 @@ export const PhotoCardsList = ({ categoryId = 0 }) => {
   return (
     <List>
       {
-        categoryId === 0
+        // eslint-disable-next-line use-isnan
+        categoryData.length === 4
           ? photos.map(photo => <PhotoCard key={photo.id} {...photo} />)
           // : photosFiltered.map(photo => <PhotoCard key={photo.id} {...photo} />)
           : photos
