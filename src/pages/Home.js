@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { PhotoCardsList } from '../components/PhotoCardsList'
 import { CategoriesList } from '../components/CategoriesList/index'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 export const Home = () => {
   const [categoryId, setCategoryId] = useState()
@@ -15,7 +14,7 @@ export const Home = () => {
     <>
       <CategoriesList />
       <PhotoCardsList
-        categoryId={categeryData !== null ? parseInt(categoryId) : 1}
+        categoryId={categeryData !== null ? parseInt(categoryId) : 0}
       />
     </>
   )

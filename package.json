@@ -6,7 +6,7 @@
   "scripts": {
     "vercel-build": "npm run build",
     "build": "webpack",
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --history-api-fallback",
     "lint": "standard"
   },
   "repository": {
