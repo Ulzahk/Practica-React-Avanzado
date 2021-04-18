@@ -1,25 +1,32 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useCallback } from 'react'
 import { PhotoCard } from '../PhotoCard/index'
 import { List } from './styles'
 import db from '../../../api/db.json'
 
 export const PhotoCardsList = ({ categoryId = 0 }) => {
   const [photos] = useState(db.photos)
-  const [photosFiltered, setPhotosFiltered] = useState([])
 
-  if (categoryId !== 0 && photosFiltered.length === 0) {
-    const filteredPhotos = photos.filter(photo => {
-      return photo.categoryId === categoryId
-    })
-    setPhotosFiltered(filteredPhotos)
-  }
+  // const forceUpdate = () => {
+  //   const [, setTick] = useState(0)
+  //   const update = useCallback(() => {
+  //     setTick(tick => tick + 1)
+  //   }, [])
+  //   return update
+  // }
+
+  // if (categoryId !== 10) {
+  //   forceUpdate()
+  // }
 
   return (
     <List>
       {
-        photosFiltered.length !== 0
-          ? photosFiltered.map(photo => <PhotoCard key={photo.id} {...photo} />)
-          : photos.map(photo => <PhotoCard key={photo.id} {...photo} />)
+        categoryId === 0
+          ? photos.map(photo => <PhotoCard key={photo.id} {...photo} />)
+          // : photosFiltered.map(photo => <PhotoCard key={photo.id} {...photo} />)
+          : photos
+            .filter(photo => photo.categoryId === categoryId)
+            .map(filteredPhoto => <PhotoCard key={filteredPhoto.id} {...filteredPhoto} />)
       }
     </List>
   )
