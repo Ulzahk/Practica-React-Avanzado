@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../hooks/UserContext'
 
 export const NotRegisterUser = () => {
-  return (
-    <h1>NotRegisterUser</h1>
-  )
+  const { isAuth, setIsAuth } = useContext(UserContext)
+  console.log('isAuth Not Register User', isAuth)
+  if (isAuth !== 'loggedIn') {
+    return (
+      <button onClick={() => setIsAuth('loggedIn')}>Iniciar Sesión</button>
+    )
+  }
 }

@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-indent */
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { UserContext } from './hooks/UserContext'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { GlobalStyle } from './components/styles/GlobalStyles'
 import { Logo } from './components/Logo'
@@ -15,30 +16,33 @@ import { NotRegisterUser } from './pages/NotRegisterUser'
 //   return children({ isAuth: false })
 // }
 
-const isAuth = false
-
 export const App = () => {
+  const [isAuth, setIsAuth] = useState('initializing')
+
+  console.log('isAuth', isAuth)
   return (
     <BrowserRouter>
-      <GlobalStyle />
-      <Logo />
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/pet/:categoryId' component={Home} />
-        <Route path='/detail/:detailId' component={Detail} />
-        {
-          isAuth
-            ? <>
-                <Route exact path='/favs' component={Favs} />
-                <Route exact path='/user' component={User} />
-              </>
-            : <>
-                <Route exact path='/favs' component={NotRegisterUser} />
-                <Route exact path='/user' component={NotRegisterUser} />
-              </>
-        }
-      </Switch>
-      <NavBar />
+      <UserContext.Provider value={{ isAuth, setIsAuth }}>
+        <GlobalStyle />
+        <Logo />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/pet/:categoryId' component={Home} />
+          <Route path='/detail/:detailId' component={Detail} />
+          {
+            isAuth === 'loggedIn'
+              ? <>
+                  <Route exact path='/favs' component={Favs} />
+                  <Route exact path='/user' component={User} />
+                </>
+              : <>
+                  <Route exact path='/favs' component={NotRegisterUser} />
+                  <Route exact path='/user' component={NotRegisterUser} />
+                </>
+          }
+        </Switch>
+        <NavBar />
+      </UserContext.Provider>
     </BrowserRouter>
   )
 }
