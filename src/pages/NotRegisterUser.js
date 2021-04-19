@@ -1,12 +1,27 @@
 import React, { useContext } from 'react'
-import { UserContext } from '../hooks/UserContext'
+import { UserForm } from '../components/UserForm'
+// import { UserContext } from '../hooks/UserContext'
 
 export const NotRegisterUser = () => {
-  const { isAuth, setIsAuth } = useContext(UserContext)
-  console.log('isAuth Not Register User', isAuth)
+  const isAuth = window.localStorage.getItem('isLogged')
+
+  const logInFunction = () => {
+    window.localStorage.setItem('isLogged', 'loggedIn')
+    window.location.reload()
+  }
+
+  const logOutFunction = () => {
+    window.localStorage.setItem('isLogged', 'loggedOut')
+    window.location.reload()
+  }
+
   if (isAuth !== 'loggedIn') {
     return (
-      <button onClick={() => setIsAuth('loggedIn')}>Iniciar Sesión</button>
+      <UserForm onSubmit={logInFunction} />
     )
   }
+
+  return (
+    <button onClick={logOutFunction}>Cerrar Sesión</button>
+  )
 }

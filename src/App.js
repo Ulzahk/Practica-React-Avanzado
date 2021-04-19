@@ -19,7 +19,13 @@ import { NotRegisterUser } from './pages/NotRegisterUser'
 export const App = () => {
   const [isAuth, setIsAuth] = useState('initializing')
 
-  console.log('isAuth', isAuth)
+  // using LocalStorage because we don't have Link component
+  const isLogged = window.localStorage.getItem('isLogged')
+
+  if (isLogged === null) {
+    window.localStorage.setItem('isLogged', 'initializing')
+  }
+
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ isAuth, setIsAuth }}>
