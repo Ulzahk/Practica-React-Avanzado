@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { Svg } from './styles'
+import { Anchor, Svg } from './styles'
 
 export const Logo = (props) => {
   return (
-    <a href='/'>
+    <Anchor href='/'>
       <Svg
         width={387.922}
         height={122.021}
@@ -58,6 +58,6 @@ export const Logo = (props) => {
         </g>
         <style />
       </Svg>
-    </a>
+    </Anchor>
   )
 }

@@ -17,7 +17,10 @@ export const NotRegisterUser = () => {
 
   if (isAuth !== 'loggedIn') {
     return (
-      <UserForm onSubmit={logInFunction} />
+      <>
+        <UserForm onSubmit={logInFunction} title='Registrarse' />
+        <UserForm onSubmit={logInFunction} title='Iniciar Sesión' />
+      </>
     )
   }
 
