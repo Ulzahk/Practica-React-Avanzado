@@ -13,8 +13,8 @@ export const UserForm = ({ onSubmit, title }) => {
     <>
       <Title>{title}</Title>
       <Form onSubmit={onSubmit}>
-        <Input placeholder='Email' {...email} />
-        <Input placeholder='Password' {...password} />
+        <Input type='email' placeholder='Email' {...email} />
+        <Input type='password' placeholder='Password' {...password} />
         <Button>{title}</Button>
       </Form>
     </>
