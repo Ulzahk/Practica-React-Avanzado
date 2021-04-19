@@ -17,7 +17,7 @@ import { NotRegisterUser } from './pages/NotRegisterUser'
 // }
 
 export const App = () => {
-  const [isAuth, setIsAuth] = useState('initializing')
+  const [isAuth, setIsAuth] = useState()
 
   // using LocalStorage because we don't have Link component
   const isLogged = window.localStorage.getItem('isLogged')
@@ -36,7 +36,7 @@ export const App = () => {
           <Route path='/pet/:categoryId' component={Home} />
           <Route path='/detail/:detailId' component={Detail} />
           {
-            isAuth === 'loggedIn'
+            isLogged === 'loggedIn'
               ? <>
                   <Route exact path='/favs' component={Favs} />
                   <Route exact path='/user' component={User} />

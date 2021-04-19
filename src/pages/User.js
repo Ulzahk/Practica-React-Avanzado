@@ -1,7 +1,10 @@
 import React from 'react'
+import { LogOutButton } from '../components/LogOutButton'
 
 export const User = () => {
   return (
-    <h1>User</h1>
+    <>
+      <LogOutButton title='User Profile' />
+    </>
   )
 }

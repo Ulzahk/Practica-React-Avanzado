@@ -1,7 +1,11 @@
 import React from 'react'
+import { FavsList } from '../components/FavsList'
 
 export const Favs = () => {
   return (
-    <h1>Favs</h1>
+    <>
+      <FavsList title='Favorites' />
+    </>
+
   )
 }

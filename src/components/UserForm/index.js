@@ -1,6 +1,6 @@
 import React from 'react'
 import { useInputValue } from '../../hooks/useInputValue'
-import {Form, Input, Button, Title} from './styles'
+import { Form, Input, Button, Title } from './styles'
 
 export const UserForm = ({ onSubmit, title }) => {
   // Instead of using this ↓
